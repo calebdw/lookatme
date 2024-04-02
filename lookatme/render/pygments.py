@@ -69,7 +69,7 @@ def render_text(text, lang="text", style_name=None, plain=False):
     markup = []
     for x in formatter.formatgenerator(code_tokens):
         if style_bg:
-            x[0].background = style_bg
+            x = (x[0].copy_modified(bg=style_bg), x[1])
         markup.append(x)
 
     if markup[-1][1] == "\n":
